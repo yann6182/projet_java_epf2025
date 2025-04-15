@@ -28,6 +28,27 @@ public class ZombieDAO {
     public Zombie getZombie(int id) {
         return jdbcTemplate.queryForObject("SELECT * FROM zombie WHERE id_zombie = ?", zombieRowMapper, id);
     }
+    public int addZombie(Zombie zombie) {
+        return jdbcTemplate.update(
+                "INSERT INTO zombie (nom, point_de_vie, attaque_par_seconde, degat_attaque, vitesse_de_deplacement, chemin_image) VALUES (?, ?, ?, ?, ?, ?)",
+                zombie.getNom(), zombie.getPoint_de_vie(), zombie.getAttaque_par_seconde(), zombie.getDegat_attaque(), zombie.getVitesse(), zombie.getCheminImage()
+        );
+    }
+
+    public int updateZombie(Zombie zombie) {
+        return jdbcTemplate.update(
+                "UPDATE zombie SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, vitesse_de_deplacement = ?, chemin_image = ? WHERE id_zombie = ?",
+                zombie.getNom(), zombie.getPoint_de_vie(), zombie.getAttaque_par_seconde(), zombie.getDegat_attaque(), zombie.getVitesse(), zombie.getCheminImage(), zombie.getId()
+        );
+    }
+
+    public int deleteZombie(int id) {
+        return jdbcTemplate.update("DELETE FROM zombie WHERE id_zombie = ?", id);
+    }
+
+    public List<Zombie> getZombiesByMapId(int mapId) {
+        return jdbcTemplate.query("SELECT * FROM zombie WHERE map_id = ?", zombieRowMapper, mapId);
+    }
 
 
 

@@ -1,17 +1,14 @@
 package com.epf.service;
 
-import com.epf.persistance.Dao.PlanteDAO;
 import com.epf.persistance.models.Plante;
 
 import java.util.List;
 
-public class PlanteService {
-    private final PlanteDAO planteDAO;
-    public PlanteService(PlanteDAO planteDAO) {
-        this.planteDAO = planteDAO;
-    }
-    public List<Plante> getAllPlantes(){
-        return planteDAO.getAllPlantes();
-    }
+public interface PlanteService {
 
+    public List<Plante> getAllPlantes();
+    public Plante getPlanteById(int id);
+    public int addPlante(Plante plante) ;
+    public int updatePlante(Plante plante) ;
+    public int deletePlante(int id) ;
 }

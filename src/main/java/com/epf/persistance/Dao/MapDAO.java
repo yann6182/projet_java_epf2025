@@ -39,4 +39,9 @@ public class MapDAO {
     public int deleteMap(int id) {
         return jdbcTemplate.update("DELETE FROM map WHERE id_map = ?", id);
     }
+
+    public int updateMap(Map map) {
+        return jdbcTemplate.update("UPDATE Map SET ligne = ?, colonne = ?, chemin_image = ? WHERE id_map = ?",
+                map.getLigne(), map.getColonne(), map.getCheminImage(), map.getIdMap());
+    }
 }

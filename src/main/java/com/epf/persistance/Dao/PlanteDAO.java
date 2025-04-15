@@ -44,4 +44,9 @@ public class PlanteDAO {
     public int deletePlante(int id) {
         return jdbcTemplate.update("DELETE FROM plante WHERE id_plante = ?", id);
     }
+    public int updatePlante(Plante plante) {
+        return jdbcTemplate.update("UPDATE Plante SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, cout = ?, soleil_par_seconde = ?, effet = ?, chemin_image = ? WHERE id_plante = ?",
+                plante.getNom(), plante.getPointDeVie(), plante.getAttaqueParSeconde(), plante.getDegatAttaque(), plante.getCout(), plante.getSoleilParSeconde(), plante.getEffet(), plante.getCheminImage(), plante.getIdPlante());
+    }
+
 }

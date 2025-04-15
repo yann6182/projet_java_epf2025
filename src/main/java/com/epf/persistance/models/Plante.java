@@ -1,6 +1,5 @@
 package com.epf.persistance.models;
 
-// Classe représentant la table Plante
 public class Plante {
     private int idPlante;
     private String nom;

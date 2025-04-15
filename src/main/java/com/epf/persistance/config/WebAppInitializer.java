@@ -10,12 +10,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) {
-        // Créer le contexte d'application Spring basé sur les annotations
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(DatabaseConnection.class);
         appContext.setConfigLocation("WEB-INF/spring-config.xml");
 
-        // Créer et enregistrer le DispatcherServlet
         DispatcherServlet dispatcherServlet = new DispatcherServlet(appContext);
         ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcher", dispatcherServlet);
         registration.setLoadOnStartup(1);

@@ -22,6 +22,10 @@ public class Zombie {
 
     }
 
+    public Zombie() {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -62,7 +66,11 @@ public class Zombie {
     public void setCheminImage(String cheminImage) {
         this.cheminImage = cheminImage;
     }
-   
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
 }

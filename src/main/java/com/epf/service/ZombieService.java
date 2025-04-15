@@ -1,22 +1,15 @@
 package com.epf.service;
 
-import com.epf.persistance.Dao.ZombieDAO;
 import com.epf.persistance.models.Zombie;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
-public class ZombieService {
-    private final ZombieDAO zombieDAO;
 
-    public ZombieService(ZombieDAO zombieDAO) {
-        this.zombieDAO = zombieDAO;
-    }
-    public List<Zombie> getAllZombies(){
-        return zombieDAO.getAllZombies();
-    }
+public interface ZombieService {
+    public List<Zombie> getAllZombies();
 
-    public Zombie getZombie(int id){
-        return zombieDAO.getZombie(id);
-    }
+    public Zombie getZombie(int id);
+    public List<Zombie> getZombiesByMapId(int mapId) ;
+    public int addZombie(Zombie zombie) ;
+    public int updateZombie(Zombie zombie) ;
+    public int deleteZombie(int id) ;
 }
