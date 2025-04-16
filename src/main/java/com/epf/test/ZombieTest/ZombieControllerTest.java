@@ -41,11 +41,11 @@ public class ZombieControllerTest {
 
         assertNotNull(result);
         assertEquals(2, result.size());
-        assertEquals(1, result.get(0).getId());
+        assertEquals(1, result.get(0).getId_zombie());
         assertEquals("Basic Zombie", result.get(0).getNom());
         assertEquals(100, result.get(0).getPoint_de_vie());
 
-        assertEquals(2, result.get(1).getId());
+        assertEquals(2, result.get(1).getId_zombie());
         assertEquals("Cone Zombie", result.get(1).getNom());
 
         verify(zombieService, times(1)).getAllZombies();
@@ -61,13 +61,13 @@ public class ZombieControllerTest {
         ZombieDTO result = zombieController.getZombie(zombieId);
 
         assertNotNull(result);
-        assertEquals(zombieId, result.getId());
+        assertEquals(zombieId, result.getId_zombie());
         assertEquals("Basic Zombie", result.getNom());
         assertEquals(100, result.getPoint_de_vie());
-        assertEquals(1L, result.getAttaque_par_seconde());
-        assertEquals("10", result.getDegat_attaque());
-        assertEquals(5L, result.getVitesse());
-        assertEquals("zombie1.png", result.getCheminImage());
+        assertEquals(1, result.getAttaque_par_seconde());
+        assertEquals(10, result.getDegat_attaque());
+        assertEquals(5, result.getVitesse_de_deplacement());
+        assertEquals("zombie1.png", result.getChemin_image());
 
         verify(zombieService, times(1)).getZombie(zombieId);
     }
@@ -85,8 +85,8 @@ public class ZombieControllerTest {
 
         assertNotNull(result);
         assertEquals(2, result.size());
-        assertEquals(1, result.get(0).getId());
-        assertEquals(2, result.get(1).getId());
+        assertEquals(1, result.get(0).getId_zombie());
+        assertEquals(2, result.get(1).getId_zombie());
 
         verify(zombieService, times(1)).getZombiesByMapId(mapId);
     }
@@ -96,10 +96,10 @@ public class ZombieControllerTest {
         ZombieDTO zombieDTO = new ZombieDTO();
         zombieDTO.setNom("Basic Zombie");
         zombieDTO.setPoint_de_vie(100);
-        zombieDTO.setAttaque_par_seconde(1L);
-        zombieDTO.setDegat_attaque("10");
-        zombieDTO.setVitesse(5L);
-        zombieDTO.setCheminImage("zombie1.png");
+        zombieDTO.setAttaque_par_seconde(1);
+        zombieDTO.setDegat_attaque(10);
+        zombieDTO.setVitesse_de_deplacement(5);
+        zombieDTO.setChemin_image("zombie1.png");
 
         when(zombieService.addZombie(any(Zombie.class))).thenReturn(1);
 
@@ -116,17 +116,17 @@ public class ZombieControllerTest {
         ZombieDTO zombieDTO = new ZombieDTO();
         zombieDTO.setNom("Updated Zombie");
         zombieDTO.setPoint_de_vie(120);
-        zombieDTO.setAttaque_par_seconde(1L);
-        zombieDTO.setDegat_attaque("12");
-        zombieDTO.setVitesse(4L);
-        zombieDTO.setCheminImage("zombie_updated.png");
+        zombieDTO.setAttaque_par_seconde(1);
+        zombieDTO.setDegat_attaque(12);
+        zombieDTO.setVitesse_de_deplacement(4);
+        zombieDTO.setChemin_image("zombie_updated.png");
 
         when(zombieService.updateZombie(any(Zombie.class))).thenReturn(1);
 
         int result = zombieController.updateZombie(zombieId, zombieDTO);
 
         assertEquals(1, result);
-        assertEquals(zombieId, zombieDTO.getId()); // Check ID was set
+        assertEquals(zombieId, zombieDTO.getId_zombie()); // Check ID was set
 
         verify(zombieService, times(1)).updateZombie(any(Zombie.class));
     }

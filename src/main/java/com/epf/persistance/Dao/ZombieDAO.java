@@ -47,7 +47,7 @@ public class ZombieDAO {
     }
 
     public List<Zombie> getZombiesByMapId(int mapId) {
-        return jdbcTemplate.query("SELECT * FROM zombie WHERE map_id = ?", zombieRowMapper, mapId);
+        return jdbcTemplate.query("SELECT * FROM zombie WHERE id_map = ?", zombieRowMapper, mapId);
     }
 
 

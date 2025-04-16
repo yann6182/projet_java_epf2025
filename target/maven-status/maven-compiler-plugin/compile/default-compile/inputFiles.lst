@@ -8,6 +8,7 @@ D:\CH4\projet_pvz\src\main\java\com\epf\api\MapController.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\Dao\PlanteDAO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\dto\MapDTO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\test\PlanteTest\PlanteDAOTest.java
+D:\CH4\projet_pvz\src\main\java\com\epf\persistance\config\WebConfig.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\dto\PlanteDTO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\service\ZombieService.java
 D:\CH4\projet_pvz\src\main\java\com\epf\Main.java
@@ -20,6 +21,7 @@ D:\CH4\projet_pvz\src\main\java\com\epf\test\MapTest\MapDAOIntegrationTest.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\dto\ZombieDTO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\test\ZombieTest\ZombieMapperTest.java
 D:\CH4\projet_pvz\src\main\java\com\epf\service\Imple\PlanteServiceImpl.java
+D:\CH4\projet_pvz\src\main\java\com\epf\api\HomeController.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\Dao\MapDAO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\mapper\ZombieMapper.java
 D:\CH4\projet_pvz\src\main\java\com\epf\test\MapTest\MapServiceImplTest.java
@@ -31,6 +33,7 @@ D:\CH4\projet_pvz\src\main\java\com\epf\persistance\config\DatabaseConnection.ja
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\models\Zombie.java
 D:\CH4\projet_pvz\src\main\java\com\epf\api\ZombieController.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\mapper\PlanteMapper.java
+D:\CH4\projet_pvz\src\main\java\com\epf\persistance\config\SwaggerConfig.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\Dao\ZombieDAO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\mapper\MapMapper.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\models\Map.java

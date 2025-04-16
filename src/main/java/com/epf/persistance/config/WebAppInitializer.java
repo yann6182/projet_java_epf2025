@@ -12,6 +12,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) {
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(DatabaseConnection.class);
+        appContext.register(OpenApiConfig.class);
         appContext.setConfigLocation("WEB-INF/spring-config.xml");
 
         DispatcherServlet dispatcherServlet = new DispatcherServlet(appContext);

@@ -45,11 +45,11 @@ public class MapServiceImpl implements MapService {
     }
 
     @Override
-    public int deleteMap(int idMap) {
-        List<Zombie> zombies = zombieDAO.getZombiesByMapId(idMap);
+    public int deleteMap(int id) {
+        List<Zombie> zombies = zombieDAO.getZombiesByMapId(id);
         for (Zombie zombie : zombies) {
             zombieDAO.deleteZombie(zombie.getId());
         }
-        return mapDAO.deleteMap(idMap);
+        return mapDAO.deleteMap(id);
     }
 }

@@ -36,7 +36,7 @@ package com.epf.api;
 
         @PutMapping("/{id}")
         public int updatePlante(@PathVariable int id, @RequestBody PlanteDTO planteDTO) {
-            planteDTO.setIdPlante(id);
+            planteDTO.setId_plante(id);
             return planteService.updatePlante(PlanteMapper.toPlante(planteDTO));
         }
 
