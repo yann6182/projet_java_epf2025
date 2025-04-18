@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Plants vs Zombies API</display-name>
+
+    <!-- Configuration pour Spring -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+
+    <!-- Classe de configuration principale -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>com.epf.config.AppConfig</param-value>
+    </context-param>
+
+    <!-- Listener pour charger le contexte Spring -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Configuration de SpringDoc OpenAPI -->
+    <context-param>
+        <param-name>springdoc.swagger-ui.path</param-name>
+        <param-value>/swagger-ui/index.html</param-value>
+    </context-param>
+    <context-param>
+        <param-name>springdoc.api-docs.path</param-name>
+        <param-value>/v3/api-docs</param-value>
+    </context-param>
+    <context-param>
+        <param-name>springdoc.swagger-ui.disable-swagger-default-url</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <!-- Filtre CORS -->
+    <filter>
+        <filter-name>corsFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Dispatcher Servlet -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>com.epf.config.AppConfig</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app> 

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -103,9 +105,10 @@ public class ZombieControllerTest {
 
         when(zombieService.addZombie(any(Zombie.class))).thenReturn(1);
 
-        int result = zombieController.addZombie(zombieDTO);
+        ResponseEntity<Integer> response = zombieController.addZombie(zombieDTO);
 
-        assertEquals(1, result);
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(1, response.getBody());
 
         verify(zombieService, times(1)).addZombie(any(Zombie.class));
     }
@@ -123,9 +126,10 @@ public class ZombieControllerTest {
 
         when(zombieService.updateZombie(any(Zombie.class))).thenReturn(1);
 
-        int result = zombieController.updateZombie(zombieId, zombieDTO);
+        ResponseEntity<Integer> response = zombieController.updateZombie(zombieId, zombieDTO);
 
-        assertEquals(1, result);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody());
         assertEquals(zombieId, zombieDTO.getId_zombie()); // Check ID was set
 
         verify(zombieService, times(1)).updateZombie(any(Zombie.class));
@@ -136,9 +140,10 @@ public class ZombieControllerTest {
         int zombieId = 1;
         when(zombieService.deleteZombie(zombieId)).thenReturn(1);
 
-        int result = zombieController.deleteZombie(zombieId);
+        ResponseEntity<Integer> response = zombieController.deleteZombie(zombieId);
 
-        assertEquals(1, result);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody());
         verify(zombieService, times(1)).deleteZombie(zombieId);
     }
 }
