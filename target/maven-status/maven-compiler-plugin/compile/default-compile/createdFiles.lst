@@ -38,11 +38,13 @@ com\epf\persistance\Dao\ZombieDAO.class
 com\epf\persistance\config\ParamInitializer.class
 com\epf\persistance\dto\PlanteDTO.class
 com\epf\test\ZombieTest\ZombieControllerTest.class
+com\epf\config\SecurityConfig.class
 com\epf\persistance\config\CorsConfig.class
 com\epf\test\ZombieTest\ZombieMapperTest.class
 com\epf\persistance\mapper\PlanteMapper.class
 com\epf\test\MapTest\MapControllerTest.class
 com\epf\service\ValidationService.class
+com\epf\config\SecurityInitializer.class
 com\epf\api\exception\BadRequestException.class
 com\epf\persistance\config\DatabaseConnection.class
 com\epf\config\AppConfig.class

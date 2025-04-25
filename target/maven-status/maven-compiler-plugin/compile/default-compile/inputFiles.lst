@@ -1,4 +1,5 @@
 D:\CH4\projet_pvz\src\main\java\com\epf\test\PlanteTest\PlanteServiceImplTest.java
+D:\CH4\projet_pvz\src\main\java\com\epf\config\SecurityInitializer.java
 D:\CH4\projet_pvz\src\main\java\com\epf\api\PlanteController.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\Dao\PlanteDAO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\dto\MapDTO.java
@@ -18,6 +19,7 @@ D:\CH4\projet_pvz\src\main\java\com\epf\test\MapTest\MapMapperTest.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\config\DatabaseConnection.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\models\Zombie.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\mapper\PlanteMapper.java
+D:\CH4\projet_pvz\src\main\java\com\epf\config\SecurityConfig.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\Dao\ZombieDAO.java
 D:\CH4\projet_pvz\src\main\java\com\epf\persistance\models\Map.java
 D:\CH4\projet_pvz\src\main\java\com\epf\api\exception\ServiceUnavailableException.java

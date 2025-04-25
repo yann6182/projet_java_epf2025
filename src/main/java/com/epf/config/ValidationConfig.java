@@ -9,16 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
-/**
- * Configuration pour la validation des beans
- * Utilise Jakarta Validation API avec Hibernate Validator pour Spring 6
- */
 @Configuration
 public class ValidationConfig {
 
-    /**
-     * Crée un validateur Jakarta explicitement configuré
-     */
     @Bean
     public Validator jakartaValidator() {
         try {
@@ -31,18 +24,14 @@ public class ValidationConfig {
         }
     }
 
-    /**
-     * Configure le validateur pour les objets Java dans Spring
-     */
+
     @Bean
     public LocalValidatorFactoryBean validator() {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         return bean;
     }
 
-    /**
-     * Active la validation des méthodes avec @Validated
-     */
+
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {
         MethodValidationPostProcessor processor = new MethodValidationPostProcessor();

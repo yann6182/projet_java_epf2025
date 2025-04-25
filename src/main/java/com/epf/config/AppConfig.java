@@ -27,17 +27,16 @@ import java.util.Arrays;
 @ComponentScan(basePackages = {
         "com.epf.api",
         "com.epf.service",
-        "com.epf.persistance.dao"
+        "com.epf.persistance.Dao"
 })
 @Import({
         ValidationConfig.class,
-        com.epf.persistance.config.OpenApiConfig.class
+        com.epf.persistance.config.OpenApiConfig.class,
+        SecurityConfig.class
 })
 public class AppConfig implements WebMvcConfigurer {
 
-    /**
-     * Configure la source de données pour la base de données
-     */
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -48,17 +47,13 @@ public class AppConfig implements WebMvcConfigurer {
         return dataSource;
     }
 
-    /**
-     * Configure le JdbcTemplate pour interagir avec la base de données
-     */
+
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 
-    /**
-     * Configure CORS pour permettre les requêtes cross-origin
-     */
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -69,24 +64,26 @@ public class AppConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 
-    /**
-     * Configure les ressources statiques
-     */
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**")
-                .addResourceLocations("/images/");
+                .addResourceLocations("/images/")
+                .addResourceLocations("classpath:/static/images/")
+                .addResourceLocations("classpath:/resources/images/");
+                
+        registry.addResourceHandler("/plante/**")
+                .addResourceLocations("/plante/")
+                .addResourceLocations("classpath:/static/plante/")
+                .addResourceLocations("classpath:/resources/plante/");
         
-        // Configuration pour Swagger UI
         registry.addResourceHandler("/swagger-ui/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/4.15.5/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    /**
-     * Crée un filtre CORS
-     */
+
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

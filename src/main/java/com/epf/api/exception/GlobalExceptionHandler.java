@@ -26,15 +26,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Gestionnaire global d'exceptions pour l'application
- * Centralise la gestion des erreurs et standardise les réponses d'erreur
- */
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    // Exceptions liées aux entités
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleEntityNotFoundException(NotFoundException ex) {
         logger.warn("Ressource non trouvée: {}", ex.getMessage());
@@ -47,7 +43,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
-    // Exceptions liées à la validation des données
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -81,7 +76,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    // Exceptions liées aux requêtes HTTP
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
         logger.warn("Corps de requête non lisible: {}", ex.getMessage());
@@ -120,7 +114,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(message, HttpStatus.BAD_REQUEST);
     }
 
-    // Exceptions liées à l'accès aux données
     @ExceptionHandler(EmptyResultDataAccessException.class)
     public ResponseEntity<Object> handleEmptyResultDataAccessException(EmptyResultDataAccessException ex) {
         logger.warn("Résultat vide lors de l'accès aux données: {}", ex.getMessage());
@@ -139,7 +132,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse("Erreur lors de l'accès aux données", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // Autres exceptions personnalisées
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<Object> handleUnauthorizedException(UnauthorizedException ex) {
         logger.warn("Accès non autorisé: {}", ex.getMessage());
@@ -164,7 +156,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    // Exception générique pour capturer toutes les autres erreurs
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGenericException(Exception ex) {
         logger.error("Erreur non gérée: {}", ex.getMessage(), ex);

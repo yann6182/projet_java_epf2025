@@ -16,7 +16,6 @@ package com.epf.persistance.mapper;
                 dto.setDegat_attaque(zombie.getDegat_attaque() != null ? Integer.parseInt(zombie.getDegat_attaque()) : 0);
                 dto.setVitesse_de_deplacement(zombie.getVitesse() != null ? zombie.getVitesse() : 0);
                 dto.setChemin_image(zombie.getCheminImage());
-                // Note: id_map is not set here as it's not available in the Zombie entity
 
                 return dto;
             }
@@ -32,7 +31,6 @@ package com.epf.persistance.mapper;
                 zombie.setDegat_attaque(String.valueOf(dto.getDegat_attaque()));
                 zombie.setVitesse(dto.getVitesse_de_deplacement() != 0 ? (long)dto.getVitesse_de_deplacement() : null);
                 zombie.setCheminImage(dto.getChemin_image());
-                // Note: id_map from DTO is not mapped to entity as there's no corresponding field
 
                 return zombie;
             }
